@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 970b014985e1c48408bc3db26bbfaa66, type: 3}
-  m_Name: dynamite
+  m_Name: tnt
   m_EditorClassIdentifier: Assembly-CSharp::Card
-  cardName: dynamite
-  cardDescription: Place in the center. If this is  the 2nd dynamite. It explotes
-    and you draw 1 card.
-  accumulative: 2
-  cardsToDrag: 1
-  cardImage: {fileID: 21300000, guid: 0f762d9c8e9c81f48b2c68ac9f660c51, type: 3}
+  cardName: tnt
+  cardDescription: Place in the center. If this is the 3rd TNT, it explote and you
+    draw 3 cards.
+  accumulative: 3
+  cardsToDrag: 3
+  cardImage: {fileID: 21300000, guid: 6531fdf2accb12d46a965201f0863861, type: 3}
