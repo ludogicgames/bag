@@ -377,7 +377,7 @@ RectTransform:
   m_GameObject: {fileID: 4335185149018397655}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.001, y: 0.001, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4999865806051700354}
@@ -386,7 +386,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 147.5}
   m_SizeDelta: {x: 250, y: 350}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &8787316708335303159
@@ -573,10 +573,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90018a744c5bdce45811158047e73754, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CardDisplay
-  cardData: {fileID: 0}
+  cardData: {fileID: 11400000, guid: e80cb60b802eadd4b9a2f7c0025058b2, type: 2}
   title: {fileID: 996138486340953011}
   description: {fileID: 6585408185584132980}
   cardImage: {fileID: 7487400256480265692}
+  hasIdleAnimation: 1
+  scaleModifyIntensity: 0.02
+  rotationIntensity: 1
+  scaleCicleTime: 4
+  rotationCicleTime: 8
 --- !u!1 &6362326080900163369
 GameObject:
   m_ObjectHideFlags: 0
