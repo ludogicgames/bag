@@ -15,15 +15,16 @@ public class HandManager : MonoBehaviour
     public List<GameObject> cardInHand = new List<GameObject>();
     void Start()
     {
-        AddCardsToHand();
+        
     }
 
     
-    public void AddCardsToHand()
+    public void AddCardsToHand(Card cardData)
     {
         GameObject newCard = Instantiate(cardPrefab, handTransform.position, Quaternion.identity, handTransform);
         cardInHand.Add(newCard);
         UpdateHandVisuals();
+        newCard.GetComponent<CardDisplay>().cardData = cardData;
     }
     public void UpdateHandVisuals()
     {
@@ -43,7 +44,7 @@ public class HandManager : MonoBehaviour
     public void Update() {
         if (Keyboard.current.aKey.wasPressedThisFrame)
         {
-            AddCardsToHand();
+           
         } 
     }
 
