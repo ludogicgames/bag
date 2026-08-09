@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.EventSystems;
 
 public class CardDisplay : MonoBehaviour
 {
@@ -39,57 +40,62 @@ public class CardDisplay : MonoBehaviour
     }
     private void Update()
     {
-        if (hasIdleAnimation) CodeAnimation();
+       if (hasIdleAnimation) CodeAnimation();
     }
 
+    #region Aesthetics
 
-    public void UpdateCardDisplay()
-    {
-        title.text = cardData.cardName;
-        description.text = cardData.cardDescription;
-        cardImage.sprite = cardData.cardImage;
-    }
-    public void ChangeBaseRotation(Quaternion newRotation)
-    {
-        baseRotation = newRotation;
+        public void UpdateCardDisplay()
+        {
+            title.text = cardData.cardName;
+            description.text = cardData.cardDescription;
+            cardImage.sprite = cardData.cardImage;
+        }
+        public void ChangeBaseRotation(Quaternion newRotation)
+        {
+            baseRotation = newRotation;
      
-    }
+        }
 
-    public void CodeAnimation()
-    {
-        //calculate angle from 2 pi
-        float waveScaleAmplitud = (Time.time / scaleCicleTime) * Mathf.PI * 2f;
+        public void CodeAnimation()
+        {
+            //calculate angle from 2 pi
+            float waveScaleAmplitud = (Time.time / scaleCicleTime) * Mathf.PI * 2f;
 
-        transform.localScale = new Vector3(
-          baseScale.x,
-          baseScale.y + baseScale.y * scaleModifyIntensity * Mathf.Sin(waveScaleAmplitud),
-          baseScale.z
-        );
+            transform.localScale = new Vector3(
+              baseScale.x,
+              baseScale.y + baseScale.y * scaleModifyIntensity * Mathf.Sin(waveScaleAmplitud),
+              baseScale.z
+            );
 
-        float waveRotationAmplitud = (Time.time / rotationCicleTime) * Mathf.PI * 2f;
+            float waveRotationAmplitud = (Time.time / rotationCicleTime) * Mathf.PI * 2f;
 
-        transform.localRotation = baseRotation * Quaternion.Euler(
-            0f,
-            0f,
-            rotationIntensity * Mathf.Sin(waveRotationAmplitud)
-        );
-
-
+            transform.localRotation = baseRotation * Quaternion.Euler(
+                0f,
+                0f,
+                rotationIntensity * Mathf.Sin(waveRotationAmplitud)
+            );
 
 
-        /*
-        // Normalize sin from -1 - 1 to 0-1
-        float normalized = (Mathf.Sin(waveAmplitud) + 1f )/2f;
 
-        // Apply the Intensity
-        float scaleFactor = Mathf.Lerp(1f - scaleModifyIntensity, 1f, normalized);
 
-        //Aply Scale transform
-        transform.localScale = new Vector3(
-            baseScale.x,
-            baseScale.y * scaleFactor,
-            baseScale.z
-        );
-        */
-    }
+            /*
+            // Normalize sin from -1 - 1 to 0-1
+            float normalized = (Mathf.Sin(waveAmplitud) + 1f )/2f;
+
+            // Apply the Intensity
+            float scaleFactor = Mathf.Lerp(1f - scaleModifyIntensity, 1f, normalized);
+
+            //Aply Scale transform
+            transform.localScale = new Vector3(
+                baseScale.x,
+                baseScale.y * scaleFactor,
+                baseScale.z
+            );
+            */
+        }
+
+    #endregion
+
+    
 }

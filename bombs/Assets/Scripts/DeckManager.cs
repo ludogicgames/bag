@@ -5,22 +5,51 @@ using System.Collections.Generic;
 public class DeckManager : MonoBehaviour
 {
 
-    public List<Card> allCards = new List<Card>();
+    public List<Card> cardsToDraw = new List<Card>();
 
-    private int currentIndex = 0;
+    public List<Card> discard = new List<Card>();
 
-    public void DrawCard(HandManager handManager)
+
+
+
+
+
+
+    public void Start()
     {
-         if (allCards.Count == 0)
-        {
-            return;
-        }
-
-         Card nextCard = allCards[currentIndex];
-        handManager.AddCardsToHand(nextCard);
-        currentIndex = (currentIndex + 1) % allCards.Count;
+        Shuffle();
     }
 
+    public Card DrawCard()
+    {
+        if (cardsToDraw.Count == 0) DiscardToDeck();
+
+
+        Card cardToReturn = cardsToDraw[cardsToDraw.Count - 1];
+        cardsToDraw.RemoveAt(cardsToDraw.Count - 1);
+
+
+        return cardToReturn;
+    }
+    public void Shuffle()
+    {
+        for (int i = cardsToDraw.Count - 1; i > 0; i--)
+        {
+            int randomIndex = Random.Range(0, i + 1);
+
+            Card temp = cardsToDraw[i];
+            cardsToDraw[i] = cardsToDraw[randomIndex];
+            cardsToDraw[randomIndex] = temp;
+        }
+
+    }
+    public void DiscardToDeck()
+    {
+        cardsToDraw = discard;
+        discard.Clear();
+        Shuffle();
+
+    }
 
 
 }

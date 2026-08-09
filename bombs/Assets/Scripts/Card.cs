@@ -15,6 +15,8 @@ public class Card : ScriptableObject
 
 
     public Sprite cardImage;
+
+
   
     
     /*  public enum CardName
