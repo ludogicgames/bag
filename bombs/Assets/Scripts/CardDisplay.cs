@@ -28,15 +28,17 @@ public class CardDisplay : MonoBehaviour
     // Values for base
     private Quaternion baseRotation;
     private Vector3 baseScale;
+    private RectTransform cardRect;
+
 
     void Start()
     {
         
         baseRotation = transform.localRotation;
-        baseScale = transform.localScale;
-
+        //baseScale = transform.localScale;
+    
+        CardSizeUpdate();
         UpdateCardDisplay();
-        
     }
     private void Update()
     {
@@ -95,7 +97,21 @@ public class CardDisplay : MonoBehaviour
             */
         }
 
+
+        public void CardSizeUpdate()
+        {
+            Canvas canvas = GetComponentInParent<Canvas>();
+            if (canvas == null) return;
+
+            RectTransform canvasRect = canvas.GetComponent<RectTransform>();
+
+            float width = (canvasRect.rect.height + canvasRect.rect.width) / 3000;
+
+
+            baseScale = new Vector3(width, width, 1f);
+            transform.localScale = baseScale;
+        }
     #endregion
 
-    
+
 }

@@ -22,6 +22,10 @@ public class HandManager : MonoBehaviour
     void Start()
     {
         deck = deckObject.GetComponent<DeckManager>();
+
+        AddCardsToHand(deck.DrawCard());
+        AddCardsToHand(deck.DrawCard());
+        AddCardsToHand(deck.DrawCard());
     }
 
     
